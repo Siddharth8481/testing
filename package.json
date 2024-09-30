@@ -1,0 +1,40 @@
+{
+  "name": "box_app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Kpnode",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.645.0",
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^140.0.0",
+    "i18n": "^0.15.1",
+    "joi": "^17.13.1",
+    "joi-objectid": "^4.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "moment-timezone": "^0.5.45",
+    "mongoose": "^8.4.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.14",
+    "path": "^0.12.7",
+    "socket.io": "^4.7.5",
+    "tz-lookup": "^6.1.25",
+    "util": "^0.12.5"
+  }
+}
