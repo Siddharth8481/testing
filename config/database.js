@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", true);
-
+//database connection
 const mongodbConnect = mongoose
   .connect(process.env.MONGODB_DATABASE_URL, {
     // useNewUrlParser: true,
