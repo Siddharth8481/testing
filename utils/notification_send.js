@@ -2,7 +2,7 @@ const axios = require("axios");
 const serviceAccount = require("../serviceAccount.json");
 const { google } = require("googleapis");
 const projectId = "majlis-f2f96";
-
+// ..
 async function getAccessToken(serviceAccount) {
   const scopes = ["https://www.googleapis.com/auth/firebase.messaging"];
   const jwtClient = new google.auth.JWT(
@@ -42,7 +42,7 @@ module.exports = {
       body: noti_msg,
       noti_for: noti_for,
       id: id,
-      sound: sound_name + '.caf',
+      sound: sound_name + ".caf",
     };
 
     if (details != undefined) {
@@ -68,13 +68,16 @@ module.exports = {
     };
 
     try {
-      const response = await axios.post('https://fcm.googleapis.com/v1/projects/majlis-f2f96/messages:send', message,
+      const response = await axios.post(
+        "https://fcm.googleapis.com/v1/projects/majlis-f2f96/messages:send",
+        message,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             "Content-Type": "application/json",
           },
-        });
+        }
+      );
 
       return response;
     } catch (error) {
@@ -154,15 +157,30 @@ module.exports = {
           data: messageBody,
           android: {
             notification: {
-              sound: sound_name && (sound_name.toLowerCase() == "none") ? '' : (sound_name ? `${sound_name}.wav` : 'default'),
-              channel_id: sound_name && (sound_name.toLowerCase() == "none") ? 'none' : (sound_name ? `${sound_name}` : 'default'),
+              sound:
+                sound_name && sound_name.toLowerCase() == "none"
+                  ? ""
+                  : sound_name
+                  ? `${sound_name}.wav`
+                  : "default",
+              channel_id:
+                sound_name && sound_name.toLowerCase() == "none"
+                  ? "none"
+                  : sound_name
+                  ? `${sound_name}`
+                  : "default",
               // channel_id: sound_name ? `${sound_name}` : 'default',
             },
           },
           apns: {
             payload: {
               aps: {
-                sound: sound_name && (sound_name.toLowerCase() == "none") ? '' : (sound_name ? `${sound_name}.caf` : 'default'),
+                sound:
+                  sound_name && sound_name.toLowerCase() == "none"
+                    ? ""
+                    : sound_name
+                    ? `${sound_name}.caf`
+                    : "default",
                 // sound: sound_name ? `${sound_name}.caf` : 'default',
               },
             },
@@ -171,15 +189,25 @@ module.exports = {
       };
 
       try {
-        await axios.post('https://fcm.googleapis.com/v1/projects/' + projectId + '/messages:send', message, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-        });
+        await axios.post(
+          "https://fcm.googleapis.com/v1/projects/" +
+            projectId +
+            "/messages:send",
+          message,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
         console.log("Notification sent to:", value);
       } catch (error) {
-        console.error("Error sending notification to", value, error.response ? error.response.data : error.message);
+        console.error(
+          "Error sending notification to",
+          value,
+          error.response ? error.response.data : error.message
+        );
       }
     }
   },
