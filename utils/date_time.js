@@ -3,5 +3,5 @@ const dateTime = async () => {
 };
 //it's time
 
-// new time add
+
 module.exports = { dateTime };
