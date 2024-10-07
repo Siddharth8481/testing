@@ -1,6 +1,7 @@
 const moment = require("moment");
 const momenttimezone = require("moment-timezone");
 
+//it's working remove
 //now working
 const DateFormate = (startDate, endDate, time = false) => {
   if (startDate && endDate) {
